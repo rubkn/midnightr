@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+*,
+*::before,
+*::after {
+  @apply m-0 box-border p-0;
+}
+
+*::selection {
+  @apply bg-neutral-300 text-neutral-900;
+}
+
 body {
-  @apply bg-neutral-900 text-white-100 p-2;
+  @apply bg-neutral-900 text-neutral-300;
 }
