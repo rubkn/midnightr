@@ -9,9 +9,9 @@
 }
 
 *::selection {
-  @apply bg-neutral-300 text-neutral-900;
+  @apply bg-rich-blue-500 text-platinum-500;
 }
 
 body {
-  @apply bg-neutral-900 text-neutral-300;
+  @apply m-auto max-w-prose bg-black-100 p-8 font-sans text-black-500 dark:bg-black-500 dark:text-white;
 }

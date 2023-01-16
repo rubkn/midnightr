@@ -1,18 +1,20 @@
+import { Links } from '../utils/types';
+
 const Header = () => {
-  const actions = [
-    { to: "/login", label: "login" },
-    { to: "/profile", label: "profile" },
-    { to: "/settings", label: "settings" },
+  const links: Links = [
+    { href: '/login', label: 'login' },
+    { href: '/profile', label: 'profile' },
+    { href: '/settings', label: 'settings' }
   ];
 
   return (
-    <header className="flex h-12 flex-row items-center justify-between border-b border-b-neutral-700 px-5 uppercase text-neutral-300">
+    <header className="flex h-12 flex-row items-center justify-between border-b border-b-neutral-700 px-5 uppercase">
       <span className="font-black">chamber</span>
       <div className="space-x-4 font-bold tracking-tight">
-        {actions.map((action) => {
+        {links.map((link) => {
           return (
-            <a href={action.to} key={action.label}>
-              {action.label}
+            <a href={link.href} key={link.label}>
+              {link.label}
             </a>
           );
         })}
