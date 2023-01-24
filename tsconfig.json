@@ -18,9 +18,10 @@
     "paths": {
       "@components/*": ["components/*"],
       "@layouts/*": ["layouts/*"],
+      "@lib/*": ["lib/*"],
       "@pages/*": ["pages/*"],
       "@styles/*": ["styles/*"],
-      "@utils/*": ["utils/*"]
+      "@svg/*": ["svg/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "next-i18next.config.js"],

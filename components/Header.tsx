@@ -1,4 +1,4 @@
-import { Links } from '../utils/types';
+import { Links } from '../types';
 
 const Header = () => {
   const links: Links = [

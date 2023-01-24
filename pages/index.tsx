@@ -4,9 +4,16 @@ import { useTranslation } from 'next-i18next';
 import { type NextPage } from 'next';
 
 import Wrapper from '@layouts/Wrapper';
+import { useSession } from 'next-auth/react';
+import Login from '@components/Login';
 
 const Home: NextPage = () => {
   const { t } = useTranslation('common');
+  const { data: session } = useSession();
+
+  if (!session) {
+    return <Login />;
+  }
 
   return (
     <Suspense fallback={null}>
@@ -16,14 +23,9 @@ const Home: NextPage = () => {
 };
 
 export async function getStaticProps({ locale = 'en-gb' }) {
-  /* const response = await fetch('/api/github');
-  const work = await response.json();
-  console.log(work); */
-
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common']))
-      /* work */
     }
   };
 }
