@@ -1,10 +1,14 @@
 import { signIn } from 'next-auth/react';
+import Header from './Header';
 
 const Login = () => {
   return (
-    <div>
-      <button onClick={() => signIn()}>Sign in</button>
-    </div>
+    <>
+      <Header />
+      <div>
+        <button onClick={() => signIn('google')}>Sign in</button>
+      </div>
+    </>
   );
 };
 

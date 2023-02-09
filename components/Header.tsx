@@ -1,4 +1,4 @@
-import { Links } from '../types';
+import { Links } from '@lib/types';
 
 const Header = () => {
   const links: Links = [
