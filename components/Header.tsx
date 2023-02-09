@@ -8,7 +8,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="flex h-12 flex-row items-center justify-between border-b border-b-neutral-700 px-5 uppercase">
+    <header className="flex h-12 flex-row items-center justify-between border-b border-b-wolf px-5 uppercase">
       <span className="font-black">chamber</span>
       <div className="space-x-4 font-bold tracking-tight">
         {links.map((link) => {
