@@ -24,6 +24,12 @@
       "@svg/*": ["svg/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "next-i18next.config.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "next-i18next.config.js",
+    "prisma/client.js"
+  ],
   "exclude": ["node_modules"]
 }

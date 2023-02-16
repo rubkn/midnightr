@@ -4,6 +4,7 @@ import { type NextPage } from 'next';
 import Wrapper from '@layouts/Wrapper';
 import { useSession } from 'next-auth/react';
 import Login from '@components/Login';
+import Profile from '@components/Profile';
 
 const Home: NextPage = () => {
   const { data: session } = useSession();
@@ -15,6 +16,7 @@ const Home: NextPage = () => {
   return (
     <Suspense fallback={null}>
       <Wrapper></Wrapper>
+      <Profile />
     </Suspense>
   );
 };
