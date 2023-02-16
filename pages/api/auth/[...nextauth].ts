@@ -14,11 +14,12 @@ export const authOptions: NextAuthOptions = {
     }
   },
   adapter: PrismaAdapter(prisma),
+  secret: process.env.AUTH_SECRET,
   // configure one or more authentication providers
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID ?? '',
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? ''
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string
     })
     // ...add more providers here
   ]
