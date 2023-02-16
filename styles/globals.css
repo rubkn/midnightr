@@ -13,5 +13,10 @@
 }
 
 body {
-  @apply m-auto max-w-prose bg-night p-8 font-inter text-wolf dark:bg-night dark:text-wolf;
+  @apply m-auto max-w-prose bg-night p-16 font-inter text-wolf dark:bg-night dark:text-wolf;
+}
+
+p,
+span {
+  @apply font-rubik;
 }

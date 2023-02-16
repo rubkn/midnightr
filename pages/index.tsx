@@ -7,9 +7,7 @@ import Auth from '@components/Auth';
 const Home: NextPage = () => {
   return (
     <Suspense fallback={null}>
-      <Wrapper>
-        <Auth />
-      </Wrapper>
+      <Wrapper></Wrapper>
     </Suspense>
   );
 };

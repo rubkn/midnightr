@@ -15,14 +15,19 @@ module.exports = {
       // => @media (min-width: 1280px)
     },
     fontFamily: {
-      inter: ['Inter', 'sans-serif']
+      inter: ['Inter', 'sans-serif'],
+      rubik: ['Rubik', 'sans-serif']
     },
     colors: {
+      white: '#fff',
+      black: '#000',
+      red: '#ff0000', // for debugging
       platinum: '#e0e1dd',
       wolf: '#cfcfcf',
       night: '#0e0e0e',
       blue: '#0d1b2a',
-      violet: '#70566d'
+      violet: '#70566d',
+      'dark-violet': '#563c5c'
     },
     variants: {
       typography: ['dark']

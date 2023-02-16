@@ -6,7 +6,7 @@ const Wrapper = ({ children }: { children?: ReactNode }) => {
   return (
     <>
       <Head>
-        <title>Chamber: Midnight Thoughts</title>
+        <title>Midnigthr</title>
         <meta property="og:title" content="chamber" key="title" />
         <meta
           name="description"
@@ -14,7 +14,7 @@ const Wrapper = ({ children }: { children?: ReactNode }) => {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      {/* <Header /> */}
+      <Header />
       {children}
     </>
   );

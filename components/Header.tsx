@@ -1,26 +1,14 @@
 import { FC } from 'react';
 
-import { Links } from '@lib/types';
+import Auth from './Auth';
 
 const Header: FC = () => {
-  const links: Links = [
-    { href: '/login', label: 'login' },
-    { href: '/profile', label: 'profile' },
-    { href: '/settings', label: 'settings' }
-  ];
-
   return (
-    <header className="flex h-12 flex-row items-center justify-between border-b border-b-wolf px-5 uppercase">
-      <span className="font-black">chamber</span>
-      <div className="space-x-4 font-bold tracking-tight">
-        {links.map((link) => {
-          return (
-            <a href={link.href} key={link.label}>
-              {link.label}
-            </a>
-          );
-        })}
-      </div>
+    <header className="flex items-center justify-between">
+      <span className="text-4xl font-bold tracking-tighter text-violet">
+        midnightr.
+      </span>
+      <Auth />
     </header>
   );
 };
