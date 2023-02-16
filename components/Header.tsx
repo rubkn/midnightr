@@ -1,6 +1,8 @@
+import { FC } from 'react';
+
 import { Links } from '@lib/types';
 
-const Header = () => {
+const Header: FC = () => {
   const links: Links = [
     { href: '/login', label: 'login' },
     { href: '/profile', label: 'profile' },
