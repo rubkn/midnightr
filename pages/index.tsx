@@ -1,14 +1,17 @@
-import { Suspense } from 'react';
 import { type NextPage } from 'next';
 
 import Wrapper from '@layouts/Wrapper';
-import Auth from '@components/Auth';
+import Header from '@components/head/Header';
+import CreatePost from '@components/posts/CreatePost';
+import AllPosts from '@components/posts/AllPosts';
 
 const Home: NextPage = () => {
   return (
-    <Suspense fallback={null}>
-      <Wrapper></Wrapper>
-    </Suspense>
+    <Wrapper>
+      <Header />
+      <CreatePost />
+      <AllPosts />
+    </Wrapper>
   );
 };
 

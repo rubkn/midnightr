@@ -21,10 +21,12 @@ module.exports = {
     colors: {
       white: '#fff',
       black: '#000',
-      red: '#ff0000', // for debugging
+      red: '#7a0000', // for debugging
       platinum: '#e0e1dd',
       wolf: '#cfcfcf',
       night: '#0e0e0e',
+      'dark-gray': '#171717',
+      'light-gray': '#c2c2c2',
       blue: '#0d1b2a',
       violet: '#70566d',
       'dark-violet': '#563c5c'

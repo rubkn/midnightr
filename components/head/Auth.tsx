@@ -11,7 +11,7 @@ const Auth: FC = () => {
       {!session?.user && (
         <div>
           <button
-            className="rounded-lg border px-4 py-2 text-sm text-white hover:border-violet hover:bg-gradient-to-r hover:from-violet hover:to-dark-violet"
+            className="rounded-lg border px-4 py-2 text-sm text-white transition-all hover:border-violet hover:bg-gradient-to-r hover:from-violet hover:to-dark-violet"
             onClick={() => {
               signIn('google');
             }}
@@ -24,19 +24,22 @@ const Auth: FC = () => {
         <div className="flex items-center space-x-4">
           {/* <h1>Logged in as {session?.user?.email}</h1> */}
           <button
-            className="rounded-lg border px-4 py-2 text-sm text-white hover:border-violet hover:bg-gradient-to-r hover:from-violet hover:to-dark-violet"
+            className="rounded-lg border px-4 py-2 text-sm text-white transition-all hover:border-violet hover:bg-gradient-to-r hover:from-violet hover:to-dark-violet"
             onClick={() => {
               signOut();
             }}
           >
             Log out
           </button>
-          <Link href="/dashboard">
+          <Link
+            href="/dashboard"
+            className="h-16 w-16 rounded-full bg-violet transition-all"
+          >
             <Image
               src={session.user?.image as string}
               width={64}
               height={64}
-              className="rounded-full"
+              className="rounded-full transition-all hover:opacity-50"
               alt={`${session.user?.name} Avatar`}
             />
           </Link>
