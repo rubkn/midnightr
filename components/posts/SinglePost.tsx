@@ -15,7 +15,7 @@ const SinglePost = ({ id, user, content, comments }: Post) => {
             src={user.image}
             alt="Avatar"
           />
-          <h3 className="text-gray-700 font-bold">{user.name}</h3>
+          <h3 className="text-gray-700 font-bold capitalize">{user.name}</h3>
         </div>
         <div className="mt-4 mb-6">{content}</div>
         <div className="flex cursor-pointer items-center">
