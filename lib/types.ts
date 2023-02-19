@@ -6,6 +6,7 @@ export type Links = {
 export type Post = {
   id: string;
   content: string;
+  createdAt?: string;
   updatedAt?: string;
   user: {
     email: string;

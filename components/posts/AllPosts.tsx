@@ -22,6 +22,7 @@ const AllPosts = () => {
           user={post.user}
           content={post.content}
           comments={post.comments}
+          createdAt={post.createdAt}
         />
       ))}
     </>
