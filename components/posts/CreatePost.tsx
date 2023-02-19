@@ -1,9 +1,10 @@
-import { type FC, useState, type FormEvent } from 'react';
+import { type FC, useState, type FormEvent, useRef } from 'react';
 import { mutate } from 'swr';
 
 const AddPost: FC = () => {
   const [content, setContent] = useState<string>('');
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
+  const ref = useRef<HTMLFormElement>(null);
 
   const submitPost = async (e: FormEvent) => {
     e.preventDefault();
@@ -17,11 +18,25 @@ const AddPost: FC = () => {
       body: JSON.stringify({ content, published: true })
     });
 
-    mutate('/api/posts/add');
+    mutate('/api/posts');
+    resetForm();
+  };
+
+  const resetForm = () => {
+    setContent('');
+    setIsDisabled(false);
+
+    if (ref.current) {
+      ref.current.reset();
+    }
   };
 
   return (
-    <form onSubmit={submitPost} className="mt-8 rounded-lg bg-dark-gray p-2">
+    <form
+      ref={ref}
+      onSubmit={submitPost}
+      className="mt-8 rounded-lg bg-dark-gray p-2"
+    >
       <div className="flex flex-col space-y-4 p-4">
         <textarea
           name="Content"

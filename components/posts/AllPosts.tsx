@@ -5,7 +5,10 @@ import fetcher from '@lib/fetcher';
 import SinglePost from './SinglePost';
 
 const AllPosts = () => {
-  const { data: posts, error } = useSWR<Post[]>('/api/posts', fetcher);
+  const { data: posts, error } = useSWR<Post[]>('/api/posts', fetcher, {
+    revalidateOnFocus: true,
+    revalidateOnReconnect: true
+  });
   console.log(posts);
 
   return (
