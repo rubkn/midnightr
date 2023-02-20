@@ -13,13 +13,13 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed!' });
+    return res.status(405).json({ error: 'Method not allowed!' });
   }
 
   const session = await getServerSession(req, res, authOptions);
 
   if (!session) {
-    return res.status(401).json({ message: 'Unauthorized' });
+    return res.status(401).json({ error: 'Unauthorized' });
   }
 
   const { content, published } = req.body;
@@ -28,15 +28,15 @@ export default async function handler(
   });
 
   if (!content) {
-    return res.status(400).json({ message: 'Missing content...' });
+    return res.status(400).json({ error: 'Missing content...' });
   }
 
   if (content.length > 300) {
-    return res.status(400).json({ message: 'Content too long...' });
+    return res.status(400).json({ error: 'Content too long...' });
   }
 
   try {
-    const newPost = await prisma.post.create({
+    const post = await prisma.post.create({
       data: {
         content: content,
         published: published,
@@ -44,8 +44,8 @@ export default async function handler(
       }
     });
 
-    res.status(200).json(newPost);
+    res.status(200).json(post);
   } catch (error) {
-    res.status(500).json({ message: 'Something went wrong...' });
+    res.status(500).json({ error: 'Something went wrong...' });
   }
 }
