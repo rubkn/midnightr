@@ -5,35 +5,36 @@ import { Post } from '@lib/types';
 import fetcher from '@lib/fetcher';
 import SinglePost from './SinglePost';
 import { PAGINATION_SIZE } from '@utils/constants';
+import LoaderIcon from '@utils/svg/Loader';
 
 const AllPosts = () => {
   const [page, setPage] = useState(0);
-  const [isLoadingMore, setIsLoadingMore] = useState(false);
 
-  const { data, error, size, setSize, isValidating } = useSWRInfinite<Post[]>(
-    (pageIndex, previousPageData) => {
-      if (previousPageData && previousPageData.length === 0) {
-        return null;
+  const { data, error, size, setSize, isValidating, isLoading } =
+    useSWRInfinite<Post[]>(
+      (pageIndex, previousPageData) => {
+        if (previousPageData && previousPageData.length === 0) {
+          return null;
+        }
+
+        return `/api/posts?page=${pageIndex + 1}`;
+      },
+      fetcher,
+      {
+        revalidateOnFocus: true,
+        revalidateOnReconnect: true
       }
-
-      return `/api/posts?page=${pageIndex + 1}`;
-    },
-    fetcher,
-    {
-      revalidateOnFocus: true,
-      revalidateOnReconnect: true
-    }
-  );
+    );
 
   const posts: Post[] = data ? ([] as Post[]).concat(...data) : [];
 
   const handleLoadingMorePosts = async () => {
-    setIsLoadingMore(true);
     await setSize(size + 1);
     setPage(page + 1);
-    setIsLoadingMore(false);
   };
 
+  const isLoadingMore =
+    isLoading || (size > 0 && data && typeof data[size - 1] === 'undefined');
   const hasNoMorePosts =
     data && data[data.length - 1]?.length < PAGINATION_SIZE;
 
@@ -58,10 +59,21 @@ const AllPosts = () => {
         <p>Sorry, no posts found.</p>
       ) : null}
 
-      {isLoadingMore && <div>Loading more posts...</div>}
-      {!isLoadingMore && !hasNoMorePosts && posts.length > 0 && (
-        <button onClick={handleLoadingMorePosts}>Load More</button>
-      )}
+      <div className="mt-4 flex items-center justify-center">
+        {isLoadingMore && (
+          <div className="flex items-center space-x-4 rounded-lg border-2 border-light-gray/50 bg-night px-4 py-2 text-light-gray transition-all hover:border-dark-violet">
+            <LoaderIcon /> <p>Loading...</p>
+          </div>
+        )}
+        {!isLoadingMore && !hasNoMorePosts && posts.length > 0 && (
+          <button
+            onClick={handleLoadingMorePosts}
+            className="rounded-lg border-2 border-light-gray/50 bg-night px-4 py-2 text-light-gray transition-all hover:border-dark-violet"
+          >
+            Load More
+          </button>
+        )}
+      </div>
     </>
   );
 };
