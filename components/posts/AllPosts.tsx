@@ -5,7 +5,7 @@ import { Post } from '@lib/types';
 import fetcher from '@lib/fetcher';
 import SinglePost from './SinglePost';
 import { PAGINATION_SIZE } from '@utils/constants';
-import LoaderIcon from '@utils/svg/Loader';
+import LoaderIcon from '@components/svg/Loader';
 
 const AllPosts = () => {
   const [page, setPage] = useState(0);
