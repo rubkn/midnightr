@@ -42,9 +42,9 @@ const AllPosts = () => {
     <>
       {!posts && error ? <h1>Something went wrong...</h1> : null}
 
-      {posts?.map((post) => (
-        <SinglePost key={post.id} post={post} />
-      ))}
+      {posts.length > 0
+        ? posts?.map((post) => <SinglePost key={post.id} post={post} />)
+        : null}
 
       {hasNoMorePosts && <p>Sorry, no more posts...</p>}
 
