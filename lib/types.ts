@@ -71,3 +71,7 @@ export type InfinitePaginationData<T> = {
   loadMore: () => void;
   hasNoMorePosts?: boolean;
 };
+
+export type PaginatedData<T> {
+  data: T[];
+}

@@ -1,15 +1,21 @@
 import { useState } from 'react';
 import useSWRInfinite from 'swr/infinite';
 import fetcher from '@lib/fetcher';
-import { InfinitePaginationData } from '@lib/types';
+import { InfinitePaginationData, PaginatedData } from '@lib/types';
 import { PAGINATION_SIZE } from '@utils/constants';
 
 const usePagination = <T>(url: string): InfinitePaginationData<T> => {
   const [page, setPage] = useState(0);
 
-  const { data, error, size, setSize, isValidating } = useSWRInfinite<T>(
+  const { data, error, size, setSize, isValidating } = useSWRInfinite<
+    PaginatedData<T>
+  >(
     (pageIndex, previousPageData) => {
-      if (previousPageData && previousPageData.length === 0) {
+      if (
+        previousPageData &&
+        previousPageData.data &&
+        previousPageData.data.length === 0
+      ) {
         return null;
       }
 
@@ -32,7 +38,13 @@ const usePagination = <T>(url: string): InfinitePaginationData<T> => {
   };
 
   const hasNoMorePosts =
-    data && data[data.length - 1]?.length < PAGINATION_SIZE;
+    data && data[data.length - 1]?.data?.length < PAGINATION_SIZE;
 
-  return { data, error, isLoadingMore, loadMore, hasNoMorePosts };
+  return {
+    data: data?.flatMap((pageData) => pageData.data),
+    error,
+    isLoadingMore,
+    loadMore,
+    hasNoMorePosts
+  };
 };
