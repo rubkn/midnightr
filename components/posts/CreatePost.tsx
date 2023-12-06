@@ -1,3 +1,4 @@
+import { Post } from '@lib/types';
 import { type FC, useState, type FormEvent, useRef } from 'react';
 import { mutate } from 'swr';
 
@@ -10,7 +11,7 @@ const AddPost: FC = () => {
     e.preventDefault();
     setIsDisabled(true);
 
-    await fetch('/api/posts/add', {
+    const response = await fetch('/api/posts/add', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -18,7 +19,8 @@ const AddPost: FC = () => {
       body: JSON.stringify({ content, published: true })
     });
 
-    mutate('/api/posts');
+    const post = await response.json();
+    mutate('/api/posts', (cached = []) => [[post], ...cached], true);
     resetForm();
   };
 
