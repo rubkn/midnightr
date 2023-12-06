@@ -72,6 +72,6 @@ export type InfinitePaginationData<T> = {
   hasNoMorePosts?: boolean;
 };
 
-export type PaginatedData<T> {
+export type PaginatedData<T> = {
   data: T[];
-}
+};
