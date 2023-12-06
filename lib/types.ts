@@ -63,3 +63,11 @@ export type AuthPosts = {
     }[];
   }[];
 };
+
+export type InfinitePaginationData<T> = {
+  data?: T[];
+  error?: any;
+  isLoadingMore: boolean;
+  loadMore: () => void;
+  hasNoMorePosts?: boolean;
+};
