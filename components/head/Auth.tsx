@@ -32,7 +32,8 @@ const Auth: FC = () => {
             Log out
           </button>
           <Link
-            href="/dashboard"
+            href="#"
+            /* href="/dashboard" */
             className="h-16 w-16 rounded-full bg-violet transition-all"
           >
             <Image

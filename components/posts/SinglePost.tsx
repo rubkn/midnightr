@@ -7,7 +7,7 @@ const SinglePost = ({ post }: { post?: Post }): JSX.Element => {
   if (!post) return <></>;
 
   return (
-    <Link href={{ pathname: `/post/${post.id}` }}>
+    <Link href="#" /* href={{ pathname: `/post/${post.id}` }} */>
       <div className="my-8 rounded-lg bg-dark-gray p-8 transition-all hover:bg-dark-gray/50">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
