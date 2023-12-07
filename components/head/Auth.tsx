@@ -4,7 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const Auth: FC = () => {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+  const loading = status === 'loading';
 
   return (
     <>

@@ -4,14 +4,14 @@ import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import prisma from '@lib/prisma';
 
 export const authOptions: NextAuthOptions = {
-  /* callbacks: {
+  callbacks: {
     session({ session, user }) {
       if (session.user) {
         session.user.id = user.id;
       }
       return session;
     }
-  }, */
+  },
   adapter: PrismaAdapter(prisma),
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
